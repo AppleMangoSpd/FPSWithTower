@@ -65,10 +65,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Interface\IBullet.cs" />
+    <Compile Include="Assets\Script\Interface\IItem.cs" />
     <Compile Include="Assets\Script\Interface\IWeapon.cs" />
-    <Compile Include="Assets\Script\PlayerInput.cs" />
-    <Compile Include="Assets\Script\TestBullet.cs" />
-    <Compile Include="Assets\Script\TestWeapon.cs" />
+    <Compile Include="Assets\Script\Item\BaseBullet.cs" />
+    <Compile Include="Assets\Script\Item\BaseWeapon.cs" />
+    <Compile Include="Assets\Script\Item\TestBullet.cs" />
+    <Compile Include="Assets\Script\Item\TestWeapon.cs" />
+    <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
+    <Compile Include="Assets\Script\Player\PlayerInput.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/unity/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
