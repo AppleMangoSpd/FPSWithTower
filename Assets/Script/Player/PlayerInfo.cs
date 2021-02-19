@@ -32,7 +32,8 @@ public class PlayerInfo : MonoBehaviour
     }
 
     //equipment
-    public BaseWeapon _playerWeapon;
+    [SerializeField]
+    private BaseWeapon _playerWeapon;
     public BaseWeapon playerWepapon
     {
         get { return _playerWeapon; }

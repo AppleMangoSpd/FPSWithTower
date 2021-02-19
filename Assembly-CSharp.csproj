@@ -64,15 +64,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\BuildManager.cs" />
+    <Compile Include="Assets\Script\CodingConventionExample.cs" />
+    <Compile Include="Assets\Script\Enemy\BaseEnemy.cs" />
+    <Compile Include="Assets\Script\Enemy\Notifier.cs" />
+    <Compile Include="Assets\Script\Enemy\TestEnemy.cs" />
     <Compile Include="Assets\Script\Interface\IBullet.cs" />
     <Compile Include="Assets\Script\Interface\IItem.cs" />
+    <Compile Include="Assets\Script\Interface\IObserver.cs" />
     <Compile Include="Assets\Script\Interface\IWeapon.cs" />
-    <Compile Include="Assets\Script\Item\BaseBullet.cs" />
-    <Compile Include="Assets\Script\Item\BaseWeapon.cs" />
-    <Compile Include="Assets\Script\Item\TestBullet.cs" />
-    <Compile Include="Assets\Script\Item\TestWeapon.cs" />
+    <Compile Include="Assets\Script\Item\Bullet\BaseBullet.cs" />
+    <Compile Include="Assets\Script\Item\Bullet\TestBullet.cs" />
+    <Compile Include="Assets\Script\Item\Weapon\BaseWeapon.cs" />
+    <Compile Include="Assets\Script\Item\Weapon\TestWeapon.cs" />
     <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Script\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Script\Utility\Edge.cs" />
+    <Compile Include="Assets\Script\Utility\Node.cs" />
+    <Compile Include="Assets\Script\Utility\PriorityQueue.cs" />
+    <Compile Include="Assets\Script\Utility\Tree.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/unity/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

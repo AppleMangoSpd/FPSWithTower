@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     private PlayerInfo _playerInfo;
 
+    [SerializeField]
     private Rigidbody _playerRigdbody;
 
     private Transform _playerTransform;
@@ -13,33 +14,35 @@ public class PlayerInput : MonoBehaviour
     private float _playerX;
     private float _playerZ;
 
+    [SerializeField]
     private bool isGrounded;
 
     //First person camera setting
     [SerializeField]
     private Camera _fpsCam;
 
-    private float _mouseX;
-    private float _mouseY;
-    //[SerializeField]
-    //private float _cameraSpeed;
-    [SerializeField]
-    private float _camSpeedX;
-    [SerializeField]
-    private float _camSpeedY;
-    [SerializeField]
-    private float _camMaxLimitX = 60f;
-    [SerializeField]
-    private float _camMinLimitX = -60f;
-    [SerializeField]
-    private float _camMaxLimitY = 360f;
-    [SerializeField]
-    private float _camMinLimitY = -360f;
+    private float _mouse_X;
+    private float _mouse_Y;
 
-    private float _playerRotationX;
-    private float _playerRotationY;
+    [SerializeField]
+    private float _camSpeed_X;
+    [SerializeField]
+    private float _camSpeed_Y;
+    [SerializeField]
+    private float _camMaxLimit_X = 60f;
+    [SerializeField]
+    private float _camMinLimit_X = -60f;
+    [SerializeField]
+    private float _camMaxLimit_Y = 360f;
+    [SerializeField]
+    private float _camMinLimit_Y = -360f;
+    [SerializeField]
+    private float _mouseSensitivity;
+    
+    private float _playerRotation_X;
+    private float _playerRotation_Y;
 
-    //GetComponentInChild
+    //GetComponentInChild?
     private IWeapon _weapon;
     
     // Start is called before the first frame update
@@ -50,8 +53,8 @@ public class PlayerInput : MonoBehaviour
         _playerRigdbody = GetComponent<Rigidbody>();
         _fpsCam = GetComponentInChildren<Camera>();
         _weapon = _playerInfo.playerWepapon;
-        _playerRotationX = 0;
-        _playerRotationY = 0;
+        _playerRotation_X = 0;
+        _playerRotation_Y = 0;
 
         Debug.Log("Current Weapon is " + _weapon.ToString());
         //_camPosition = _playerTransform.position;
@@ -70,7 +73,11 @@ public class PlayerInput : MonoBehaviour
             Debug.Log("player pressed Attck (left mouse)");
             PlayerAttack();
         }
-
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("player pressed E");
+        }
+        
     }
 
     private void FixedUpdate()
@@ -90,16 +97,20 @@ public class PlayerInput : MonoBehaviour
 
     private void PlayerRotate()
     {
-        _mouseX = Input.GetAxis("Mouse X");
-        _mouseY = Input.GetAxis("Mouse Y");
+        //_mouse_X = Input.GetAxis("Mouse X");
+        //_mouse_Y = Input.GetAxis("Mouse Y");
 
-        _playerRotationX = _mouseX * _camSpeedX * Time.deltaTime;
-        _playerRotationY = _mouseY * _camSpeedY * Time.deltaTime;
+        //_playerRotation_X = _mouse_X * _camSpeed_X * Time.deltaTime;
+        //_playerRotation_Y = _mouse_Y * _camSpeed_Y * Time.deltaTime;
 
-        _playerTransform.Rotate(Vector3.up * _playerRotationX);
+        //_playerTransform.Rotate(Vector3.up * _playerRotation_X);
 
         //_fpsCam.transform.localEulerAngles = new Vector3(_playerRotationX, _playerRotationY, 0);
+        _playerTransform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X") * _mouseSensitivity);
+        //_playerTransform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse Y") * _mouseSensitivity);
+        //시야만?
     }
+
     private void PlayerJump()
     {
         if (!isGrounded)
@@ -120,18 +131,29 @@ public class PlayerInput : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Ground")
         {
             isGrounded = true;
         }
     }
-    void OnCollisionExit(Collision other)
+    private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.tag == "Ground")
         {
             isGrounded = false;
         }
+    }
+
+    public Vector3 GetPlayerViewPoint(float range)
+    {
+        RaycastHit hit;
+        //Vector3 position = _fpsCam.WorldToScreenPoint()
+        if(Physics.Raycast(transform.position, transform.forward, out hit, range))
+        {
+            return hit.collider.gameObject.transform.position;
+        }
+        return Vector3.zero;
     }
 }
