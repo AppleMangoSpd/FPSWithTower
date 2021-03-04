@@ -22,11 +22,8 @@ public class BaseBullet : MonoBehaviour, IBullet
     }
     [SerializeField]
     protected Vector3 _bulletSpawnPosition;
-    public Vector3 bulletSpawnPosition
-    {
-        get { return _bulletSpawnPosition; }
-        set { _bulletSpawnPosition = value; }
-    }
+
+    public Transform _firePos;
 
     public void SetBulletSpawnPosition(Vector3 inputPosition)
     {
@@ -55,12 +52,27 @@ public class BaseBullet : MonoBehaviour, IBullet
         Destroy(this.gameObject);
     }
 
+    protected virtual void BulletHitPlayer()
+    {
+        Destroy(this.gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Base Bullet HIt Enemy");
             BulletHitEnemy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("Base Bullet HIt Wall");
+            BulletHitWall();
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Base Bullet HIt Player");
+            BulletHitPlayer();
         }
     }
 }

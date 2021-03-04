@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class TestBullet : BaseBullet
 {
-    private void Start()
+    private void Awake()
     {
         _bulletRigidbody = GetComponent<Rigidbody>();
         BulletCreatedTest();
-    }
-    private void FixedUpdate()
-    {
-        BulletMove();
     }
     // Start is called before the first frame update
     public override void BulletCreatedTest()
@@ -23,15 +19,20 @@ public class TestBullet : BaseBullet
     }
     public override void BulletMove()
     {
-        _bulletRigidbody.velocity = transform.forward * _bulletSpeed;
+        _bulletRigidbody.velocity = _bulletSpeed * _firePos.forward;
     }
 
+    //BulletHit-함수들과 충돌함수는 BaseBullet과 동일. 개선 필요
     protected override void BulletHitEnemy(GameObject target)
     {
         target.GetComponent<BaseEnemy>().GetDamage(this);
         Destroy(this.gameObject);
     }
     protected override void BulletHitWall()
+    {
+        Destroy(this.gameObject);
+    }
+    protected override void BulletHitPlayer()
     {
         Destroy(this.gameObject);
     }
@@ -47,6 +48,10 @@ public class TestBullet : BaseBullet
             Debug.Log("TestBullet Hit Wall");
             BulletHitWall();
         }
-
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Base Bullet HIt Player");
+            BulletHitPlayer();
+        }
     }
 }

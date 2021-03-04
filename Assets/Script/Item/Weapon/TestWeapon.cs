@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class TestWeapon : BaseWeapon
 {
-
     // Start is called before the first frame update
     void Start()
     {
-        //_bullet = TestBullet;
         Debug.Log("TestWeapon Start");
         Debug.Log("TestWeapon is kind of gun");
-        //Debug.Log("Cuurent Bullet is " + _bullet.ToString());
     }
-
     private void Update()
     {
+        //PlayerInput 코드와 연관되지 않기 위해 이런 방식으로 코드생성
         if(_isFire)
         {
             Fire();
@@ -34,13 +31,11 @@ public class TestWeapon : BaseWeapon
     private void Fire() 
     {
         _isFire = true;
-        float bulletSpawnDistance = 1.5f;
-
-        Vector3 bulletDir = transform.forward * bulletSpawnDistance;
-        //_bullet = _testBulletFactory.CreateBullet();
-        Vector3 targetPos = _firePos.transform.TransformPoint(_firePos.transform.forward);
-        BaseBullet baseBullet = Instantiate(_bullet, targetPos, Quaternion.identity);
-        baseBullet.SetBulletSpawnPosition(targetPos);
+        
+        BaseBullet baseBullet = Instantiate(_bullet, _firePos.position, Quaternion.identity);
+        
+        baseBullet._firePos = _firePos;
+        baseBullet.BulletMove();
         Debug.Log("Test Weapon fired");
     }
 }

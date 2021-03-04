@@ -64,7 +64,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\BuildManager.cs" />
+    <Compile Include="Assets\Script\Build\BuildManager.cs" />
+    <Compile Include="Assets\Script\Build\BuildSystem.cs" />
+    <Compile Include="Assets\Script\Build\Preview.cs" />
     <Compile Include="Assets\Script\CodingConventionExample.cs" />
     <Compile Include="Assets\Script\Enemy\BaseEnemy.cs" />
     <Compile Include="Assets\Script\Enemy\Notifier.cs" />

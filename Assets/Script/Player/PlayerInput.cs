@@ -42,6 +42,10 @@ public class PlayerInput : MonoBehaviour
     private float _playerRotation_X;
     private float _playerRotation_Y;
 
+    //테스트에서만 사용
+    [SerializeField]
+    private float _playerBuildRange = 0.4f;
+
     //GetComponentInChild?
     private IWeapon _weapon;
     
@@ -76,6 +80,7 @@ public class PlayerInput : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("player pressed E");
+            PlayerBuild();
         }
         
     }
@@ -126,9 +131,9 @@ public class PlayerInput : MonoBehaviour
     {
         _weapon.UseWeapon();
     }
-    private void PlayerDetectItem()
+    private void PlayerBuild()
     {
-
+        Debug.Log(GetPlayerViewPoint(_playerBuildRange));
     }
 
     private void OnCollisionEnter(Collision other)
