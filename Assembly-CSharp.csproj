@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C78BEEDB-77E7-1180-55DE-961729C5AB0E}</ProjectGuid>
+    <ProjectGuid>{13CABABC-0E8D-9BFB-50D7-F23CF04B91D1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,20 +64,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BuildSystem\Scripts\BuildManager.cs" />
+    <Compile Include="Assets\BuildSystem\Scripts\BuildSystem.cs" />
+    <Compile Include="Assets\BuildSystem\Scripts\Preview.cs" />
     <Compile Include="Assets\Script\Build\BuildManager.cs" />
     <Compile Include="Assets\Script\Build\BuildSystem.cs" />
     <Compile Include="Assets\Script\Build\Preview.cs" />
     <Compile Include="Assets\Script\CodingConventionExample.cs" />
     <Compile Include="Assets\Script\Enemy\BaseEnemy.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyObserver.cs" />
     <Compile Include="Assets\Script\Enemy\Notifier.cs" />
     <Compile Include="Assets\Script\Enemy\TestEnemy.cs" />
     <Compile Include="Assets\Script\Interface\IBullet.cs" />
+    <Compile Include="Assets\Script\Interface\IBulletFactory.cs" />
     <Compile Include="Assets\Script\Interface\IItem.cs" />
     <Compile Include="Assets\Script\Interface\IObserver.cs" />
     <Compile Include="Assets\Script\Interface\IWeapon.cs" />
     <Compile Include="Assets\Script\Item\Bullet\BaseBullet.cs" />
+    <Compile Include="Assets\Script\Item\Bullet\BaseBulletFactory.cs" />
     <Compile Include="Assets\Script\Item\Bullet\TestBullet.cs" />
+    <Compile Include="Assets\Script\Item\Bullet\TestBulletFactory.cs" />
     <Compile Include="Assets\Script\Item\Weapon\BaseWeapon.cs" />
+    <Compile Include="Assets\Script\Item\Weapon\TestMeleeWeapon.cs" />
     <Compile Include="Assets\Script\Item\Weapon\TestWeapon.cs" />
     <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Script\Player\PlayerInput.cs" />
@@ -85,6 +93,7 @@
     <Compile Include="Assets\Script\Utility\Node.cs" />
     <Compile Include="Assets\Script\Utility\PriorityQueue.cs" />
     <Compile Include="Assets\Script\Utility\Tree.cs" />
+    <None Include="Assets\BuildSystem\Scripts\SetUp.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/unity/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -269,7 +278,7 @@
       <HintPath>C:/unity/2019.4.17f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/unity/2019.4.17f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -617,31 +626,31 @@
       <HintPath>C:/unity/2019.4.17f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/UnityProjectsInE/FPSWithTower/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/UnityProjectsInE/TPSWithTower/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

@@ -102,18 +102,8 @@ public class PlayerInput : MonoBehaviour
 
     private void PlayerRotate()
     {
-        //_mouse_X = Input.GetAxis("Mouse X");
-        //_mouse_Y = Input.GetAxis("Mouse Y");
-
-        //_playerRotation_X = _mouse_X * _camSpeed_X * Time.deltaTime;
-        //_playerRotation_Y = _mouse_Y * _camSpeed_Y * Time.deltaTime;
-
-        //_playerTransform.Rotate(Vector3.up * _playerRotation_X);
-
-        //_fpsCam.transform.localEulerAngles = new Vector3(_playerRotationX, _playerRotationY, 0);
+        //좌우로만 가능
         _playerTransform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X") * _mouseSensitivity);
-        //_playerTransform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse Y") * _mouseSensitivity);
-        //시야만?
     }
 
     private void PlayerJump()
